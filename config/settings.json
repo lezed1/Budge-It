@@ -1,0 +1,8 @@
+{
+  "ldap": {
+    "serverDn": "DC=cuauv",
+    "serverUrl": "ldap://cuauv.org:389",
+    "whiteListedFields": [ "displayName", "givenName", "department", "employeeNumber", "mail", "title", "address", "phone", "memberOf"],
+    "autopublishFields": [ "displayName", "department", "mail", "title", "address", "phone"]
+  }
+}

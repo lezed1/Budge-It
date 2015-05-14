@@ -1,0 +1,23 @@
+h1 Budget route
+a(href='#' data-reveal-id="addCategoryModal").button Add a category #{asdf}
+
+ul.breadcrumbs
+  li
+    +linkTo(route="category-home")
+      | CUAUV
+  +each crumbs
+    li
+      +linkTo(route="category" data=this)
+        | #{this.name}
+  li.current
+    | #{this.name}
+
++each categories
+  .panel
+    h4
+      +linkTo(route="category" data=this)
+        | #{this.name}
+
+#addCategoryModal.reveal-modal.medium(data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog")
+  +addCategory
+  a.close-reveal-modal(aria-label="Close") ×

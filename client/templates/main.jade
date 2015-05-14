@@ -1,0 +1,32 @@
+head
+  meta(charset='utf-8')
+  meta(http-equiv='X-UA-Compatible', content='IE=edge')
+  title budge-it
+  meta(name='description', content='Budge-it')
+  meta(name='viewport', content='width=device-width, initial-scale=1')
+
+template(name='ApplicationLayout')
+  .fixed.contain-to-grid
+    nav.top-bar(data-topbar role='navigation')
+      ul.title-area
+        li.name: h1
+          +linkTo(route="home")
+            | Budge It
+        li.toggle-topbar.menu-icon: a(href='#'): span Menu
+
+      section.top-bar-section
+        ul.left: li
+          +linkTo(route="category-home")
+            | Categories
+
+        ul.right
+          if currentUser
+            li: a(href='#') User_id: #{currentUser._id}
+          +atNavButton
+
+  .row: .small-12.columns
+    +yield
+
+template(name='home')
+  h1 Budge It!
+  p This is the main page - it's pretty neat.
