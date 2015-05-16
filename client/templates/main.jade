@@ -15,17 +15,23 @@ template(name='ApplicationLayout')
         li.toggle-topbar.menu-icon: a(href='#'): span Menu
 
       section.top-bar-section
-        ul.left: li
+        ul.left: li(class="{{isActiveRoute regex='category'}}")
           +linkTo(route="category-home")
             | Categories
+
+      section.top-bar-section
+        ul.left: li(class="{{isActiveRoute regex='project'}}")
+          +linkTo(route="project-home")
+            | Projects
 
         ul.right
           if currentUser
             li: a(href='#') User_id: #{currentUser._id}
           +atNavButton
 
-  .row: .small-12.columns
-    +yield
+  section(role='main')
+    .row: .small-12.columns
+      +yield
 
 template(name='home')
   h1 Budge It!

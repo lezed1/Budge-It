@@ -1,0 +1,22 @@
+h2#modalTitle Update Project
+form
+  .row
+    .small-12.columns
+      label Cost
+        .row.collapse
+          .small-1.columns: span.prefix $
+          .small-11.columns
+            input#cost(name="cost" required type="number" step="0.01" placeholder="0.00")
+  .row
+    .small-12.columns
+      label Sponsored
+        .row.collapse
+          .small-1.columns: span.prefix $
+          .small-11.columns
+            input#sponsored(name="sponsored" required type="number" step="0.01" placeholder="0.00")
+  .row
+    .small-12.columns: .panel.callout.text-center
+      #[strong Final cost:] $#[span#finalCost 0.00]
+  .row
+    .small-12.columns.text-center
+      input(type="submit" value="Update cost").button.expand

@@ -1,23 +1,53 @@
-h1 Budget route
-a(href='#' data-reveal-id="addCategoryModal").button Add a category #{asdf}
+h1 #{this.name}
 
-ul.breadcrumbs
-  li
-    +linkTo(route="category-home")
-      | CUAUV
-  +each crumbs
-    li
-      +linkTo(route="category" data=this)
-        | #{this.name}
-  li.current
-    | #{this.name}
+.row.collapse
+  .small-10.columns: ul.breadcrumbs
+    +each crumbs
+      li
+        +linkTo(route="category" data=this)
+          | #{this.name}
+            
+  .small-2.columns
+    button.button.tiny.radius.right.dropdown(data-dropdown="add-dropdown" aria-controls="add-dropdown") Add
+    ul.f-dropdown#add-dropdown(data-dropdown-content)
+      li: a(href="#" data-reveal-id="addCategoryModal") Category
+      li: a(href="#" data-reveal-id="addProjectModal") Project
 
-+each categories
-  .panel
-    h4
-      +linkTo(route="category" data=this)
-        | #{this.name}
+with categories
+  if count
+    h3 Subcategories
+    +each this
+      .panel
+        .row
+          .small-8.columns
+            h4
+              +linkTo(route="category" data=this)
+                | #{this.name}
+          .small-4.columns.text-right $#{categoryFinalCost}
 
-#addCategoryModal.reveal-modal.medium(data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog")
+with projects
+  if count
+    h3 Subprojects
+    +each this
+      .panel.callout
+        .row
+          .small-8.columns
+            h4
+              +linkTo(route="project" data=this)
+                | #{this.name}
+          .small-4.columns.text-right $#{this.finalCost}
+
+if nothingShown
+  .row
+    .small-10.columns
+      h3 Nothing to display here,
+    .small-2.columns.text-right
+      | Why not add?
+
+#addCategoryModal.reveal-modal.medium(data-reveal aria-labelledby="modalTitle" role="dialog")
   +addCategory
+  a.close-reveal-modal(aria-label="Close") ×
+
+#addProjectModal.reveal-modal.medium(data-reveal aria-labelledby="modalTitle" role="dialog")
+  +addProject
   a.close-reveal-modal(aria-label="Close") ×

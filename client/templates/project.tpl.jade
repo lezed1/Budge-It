@@ -1,0 +1,22 @@
+h1 #{this.name}
+
+.row: .small-12.columns: ul.breadcrumbs
+  +each crumbs
+    li
+      +linkTo(route="category" data=this)
+        | #{this.name}
+  li
+    +linkTo(route="project" data=this)
+      | #{this.name}
+
+.row: .medium-6.medium-centered.columns.panel
+  p #[strong Cost:] #{cost}
+  p #[strong Sponsored:] #{sponsored}
+  p #[strong Final cost:] #{finalCost}
+
+.row: .medium-6.medium-centered.columns
+  a(href="#" data-reveal-id="updateProjectModal").button.expand Update Project
+
+#updateProjectModal.reveal-modal.medium(data-reveal aria-labelledby="modalTitle" role="dialog")
+  +updateProject
+  a.close-reveal-modal(aria-label="Close") ×

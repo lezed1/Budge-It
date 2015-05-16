@@ -1,0 +1,9 @@
+ul.breadcrumbs
+  +each this
+    li
+      +linkTo(route="category" data=this)
+        | #{this.name}
+  if project
+    li
+      +linkTo(route="project" data=this)
+        | #{this.name}

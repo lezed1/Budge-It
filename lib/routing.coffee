@@ -18,12 +18,18 @@ Router.route('/',
 Router.route('/category',
   name: 'category-home'
   template: 'category'
-  data: _id: '0'
+  data: -> Categories.findOne('/')
   fastRender: true
 )
 
 Router.route('/category/:_id',
   name: 'category'
   data: -> Categories.findOne(@params._id)
+  fastRender: true
+)
+
+Router.route('/project/:_id',
+  name: 'project'
+  data: -> Projects.findOne(@params._id)
   fastRender: true
 )
