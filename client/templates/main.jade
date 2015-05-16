@@ -16,12 +16,12 @@ template(name='ApplicationLayout')
 
       section.top-bar-section
         ul.left: li(class="{{isActiveRoute regex='category'}}")
-          +linkTo(route="category-home")
+          +linkTo(route="categoryHome")
             | Categories
 
       section.top-bar-section
         ul.left: li(class="{{isActiveRoute regex='project'}}")
-          +linkTo(route="project-home")
+          +linkTo(route="projectOverview")
             | Projects
 
         ul.right

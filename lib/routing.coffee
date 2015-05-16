@@ -16,7 +16,7 @@ Router.route('/',
 )
 
 Router.route('/category',
-  name: 'category-home'
+  name: 'categoryHome'
   template: 'category'
   data: -> Categories.findOne('/')
   fastRender: true
@@ -31,5 +31,11 @@ Router.route('/category/:_id',
 Router.route('/project/:_id',
   name: 'project'
   data: -> Projects.findOne(@params._id)
+  fastRender: true
+)
+
+Router.route('/projects',
+  name: "projectOverview"
+  data: -> Projects.find()
   fastRender: true
 )
